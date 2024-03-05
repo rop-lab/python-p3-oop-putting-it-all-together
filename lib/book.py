@@ -1,12 +1,8 @@
 class Book:
     def __init__(self, title, page_count):
-        self._title = title
-        self._page_count = None  # Initialize page_count as None initially
-        self.page_count = page_count  # Use the property setter
-
-    @property
-    def title(self):
-        return self._title
+        self.title = title
+        self._page_count = None  # Private variable for page_count
+        self.page_count = page_count  # Using the setter method to set the initial page_count
 
     @property
     def page_count(self):
@@ -14,15 +10,16 @@ class Book:
 
     @page_count.setter
     def page_count(self, value):
-        if not isinstance(value, int):
-            print("page_count must be an integer")
-        else:
+        if isinstance(value, int):
             self._page_count = value
+        else:
+            print("page_count must be an integer")
 
     def turn_page(self):
         print("Flipping the page...wow, you read fast!")
 
+
 # Example usage:
-book = Book("And Then There Were None", 272)
-book.page_count = "not an integer"  # This will print "page_count must be an integer"
-book.turn_page()  # This will print "Flipping the page...wow, you read fast!"
+book1 = Book("And Then There Were None", 272)
+print(book1.title)         # Output: And Then There Were None
+print(book1.page_count)    # Output: 272
